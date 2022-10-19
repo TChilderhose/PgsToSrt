@@ -6,8 +6,7 @@ RUN cd / && \
     curl -L https://github.com/tesseract-ocr/tessdata/archive/refs/tags/4.1.0.tar.gz > tessdata.tar.gz && \
     mkdir /tessdata && \
     tar -xvf tessdata.tar.gz -C /tessdata && \
-    rm tessdata.tar.gz && \
-    find /tessdata -not -path "*/script*" -not -path "*eng*" -type f -delete
+    rm tessdata.tar.gz
 
 COPY . /src
 RUN cd /src && \
