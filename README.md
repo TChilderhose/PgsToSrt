@@ -35,7 +35,7 @@ docker run -it --rm -v /data:/data \
            -e INPUT=/data/myImageSubtitle.sup \
            -e OUTPUT=/data/myTextSubtitle.srt \
            -e LANGUAGE=eng \
-           tentacule/pgstosrt
+           ghcr.io/tchilderhose/pgstosrt
 ```
 
 ### Dependencies
