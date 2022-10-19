@@ -1,12 +1,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS builder
 
-RUN apt-get update && apt-get install -y --no-install-recommends automake ca-certificates g++ git libtool libtesseract4 make pkg-config libc6-dev
+RUN apt-get update && \
+    apt-get install -y automake ca-certificates g++ git libtool libtesseract4 make pkg-config libc6-dev && \
+    cd / && git clone https://github.com/tesseract-ocr/tessdata
 
-RUN cd / && \ 
-    curl -L https://github.com/tesseract-ocr/tessdata/archive/refs/tags/4.1.0.tar.gz > tessdata.tar.gz && \
-    mkdir /tessdata && \
-    tar -xvf tessdata.tar.gz -C /tessdata && \
-    rm tessdata.tar.gz
+RUN rm -rf /tessdata/.git
 
 COPY . /src
 RUN cd /src && \
